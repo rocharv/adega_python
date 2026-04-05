@@ -6,17 +6,17 @@ A Adega foi especialmente desenvolvida para atender as necessidades de gestão d
 
 A iniciativa faz parte da primeira disciplina de [Projeto Integrador](https://apps.univesp.br/o-que-e-projeto-integrador/) da [Univesp](https://univesp.br/) no primeiro semestre de 2025.
 
+Adaptações foram feitas para melhorar questões de acessibilidade no primeiro semestre de 2026.
+
 ## Quem
-A Adega foi desenvolvida, no backend e front-end, por **Rodrigo Viana Rocha** e teve como gerentes de produto e design os demais colegas da **Univesp 2025, GRUPO-012, PJI110-SALA-004**:
+A última versão da Adega foi desenvolvida, no backend e front-end, por **Rodrigo Viana Rocha** e teve como gerentes de produto e design os demais colegas da **Univesp 2026, DRP04 - Projeto Integrador em Computação III - Turma 004**:
 - Ana Carolina Ferreira Alves Barcaro
-- Andre Wilson Santanna Silva
-- Carolina Ferreira Alves
+- André Wilson Santanna Silva
 - Daniela Almeida Vieira
+- Fernando Roberto Barbi
 - Jean Gustavo da Cunha Marinho
 - Leonardo do Valle
 - Rodrigo Viana Rocha
-- Vanderlei Caetano de Souza
-- Zairemylli Francislayne Carreira M Silva
 
 ## Características e Funcionalidades
 - **Design responsível** para dispositivos móveis e desktops.
@@ -74,7 +74,7 @@ pipx install poetry
 ```
 
 ### 3. Instalando o projeto Adega
-Na raiz do projeto `adega\`, instale as dependências do projeto:
+Na raiz do projeto `adega_python/`, instale as dependências do projeto:
 ```bash
 poetry install
 ```
