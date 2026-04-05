@@ -19,7 +19,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu-enderecos" title="atalho: Shift + Alt + 1">
             <i class="bi bi-geo-alt"></i>
             Endereços
           </a>
@@ -40,7 +40,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu-pessoas" title="atalho: Shift + Alt + 2">
             <i class="bi bi-people"></i>
             Pessoas
           </a>
@@ -84,7 +84,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu-armazens" title="atalho: Shift + Alt + 3">
             <i class="bi bi-archive"></i>
             Armazéns
           </a>
@@ -105,7 +105,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu-itens" title="atalho: Shift + Alt + 4">
             <i class="bi bi-tag"></i>
             Itens
           </a>
@@ -149,7 +149,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu-transacoes" title="atalho: Shift + Alt + 5">
             <i class="bi bi-arrow-left-right"></i>
             Transações
           </a>
@@ -174,7 +174,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu-relatorios" title="atalho: Shift + Alt + 6">
             <i class="bi bi-file-earmark-text"></i>
             Relatórios
           </a>
@@ -193,7 +193,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu-ajuda" title="atalho: Shift + Alt + 7">
             <i class="bi bi-question-circle"></i>
             Ajuda
           </a>
@@ -225,20 +225,20 @@
       <ul class="navbar-nav mb-2" style="align-items: center;">
         <!-- Accessibility Bar -->
         <li class="nav-item me-1">
-          <button class="btn btn-sm text-body-secondary border-0 fs-5" id="btn-decrease-font" title="Diminuir fonte"
-            aria-label="Diminuir tamanho da fonte">
+          <button class="btn btn-sm text-body-secondary border-0 fs-5" id="btn-decrease-font" title="atalho: Shift + Alt + -"
+            aria-label="Diminuir tamanho da fonte (atalho: Shift + Alt + -)">
             <i class="bi bi-dash-circle"></i>
           </button>
         </li>
         <li class="nav-item me-1">
-          <button class="btn btn-sm text-body-secondary border-0 fs-5" id="btn-increase-font" title="Aumentar fonte"
-            aria-label="Aumentar tamanho da fonte">
+          <button class="btn btn-sm text-body-secondary border-0 fs-5" id="btn-increase-font" title="atalho: Shift + Alt + +"
+            aria-label="Aumentar tamanho da fonte (atalho: Shift + Alt + +)">
             <i class="bi bi-plus-circle"></i>
           </button>
         </li>
         <li class="nav-item dropdown me-3">
           <a class="nav-link text-body-secondary fs-5 p-0" style="padding: 0px 5px !important;" href="#" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false" title="Tema" aria-label="Selecionar tema">
+            data-bs-toggle="dropdown" aria-expanded="false" id="menu-tema" title="atalho: Shift + Alt + 8" aria-label="Selecionar tema">
             <i class="bi bi-circle-half"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end bg-body-secondary shadow">
@@ -270,7 +270,7 @@
         <!-- User Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link d-flex align-items-center" style="padding: 0px;" href="#" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
+            data-bs-toggle="dropdown" aria-expanded="false" id="menu-user" title="atalho: Shift + Alt + 0">
             <i class="bi bi-person-circle" style="color: #0AF; font-size: 1.5rem;"></i>
             {% if user.is_superuser %}
             <i class="bi bi-shield-lock" style="color: #F60; font-size: 1rem; position: relative; top: 0.5rem;"></i>
@@ -316,4 +316,73 @@
   {% block content %}
   {% endblock %}
 </div>
+
+<script>
+  document.addEventListener('keydown', function(event) {
+    if (event.shiftKey && event.altKey) {
+      // Map event.code to digits directly to ignore Shift making it other characters
+      // Check event.code like "Digit1", "Minus", over checking event.key
+      let pressedKey = null;
+      if (event.code.startsWith('Digit')) {
+        pressedKey = event.code.replace('Digit', '');
+      } else if (event.code === 'Minus') {
+        pressedKey = '-';
+      } else if (event.code === 'Equal' || event.code === 'NumpadAdd') {
+        pressedKey = '+'; // Note: On most keyboards, '+' is shift+'=' or on the Numpad
+      } else if (event.code === 'NumpadSubtract') {
+        pressedKey = '-';
+      }
+
+      // If the user hit actual '-' or '+' string in event.key, consider that too just in case
+      if (!pressedKey) {
+        if (event.key === '_' || event.key === '-') pressedKey = '-';
+        if (event.key === '+' || event.key === '=') pressedKey = '+';
+      }
+
+      if (pressedKey) {
+        let elementToClick = null;
+        switch (pressedKey) {
+          case '1':
+            elementToClick = document.getElementById('menu-enderecos');
+            break;
+          case '2':
+            elementToClick = document.getElementById('menu-pessoas');
+            break;
+          case '3':
+            elementToClick = document.getElementById('menu-armazens');
+            break;
+          case '4':
+            elementToClick = document.getElementById('menu-itens');
+            break;
+          case '5':
+            elementToClick = document.getElementById('menu-transacoes');
+            break;
+          case '6':
+            elementToClick = document.getElementById('menu-relatorios');
+            break;
+          case '7':
+            elementToClick = document.getElementById('menu-ajuda');
+            break;
+          case '8':
+            elementToClick = document.getElementById('menu-tema');
+            break;
+          case '0':
+            elementToClick = document.getElementById('menu-user');
+            break;
+          case '-':
+            elementToClick = document.getElementById('btn-decrease-font');
+            break;
+          case '+':
+            elementToClick = document.getElementById('btn-increase-font');
+            break;
+        }
+
+        if (elementToClick) {
+          event.preventDefault();
+          elementToClick.click();
+        }
+      }
+    }
+  });
+</script>
 {% endblock %}
